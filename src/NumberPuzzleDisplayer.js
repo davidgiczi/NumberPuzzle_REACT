@@ -1,4 +1,4 @@
-import { numberStore, shuffleNumberSquare} from "./GuessNumberLogic";
+import { numberStore, shuffleNumberSquare} from "./NumberPuzzleLogic";
 import { useState, useEffect } from 'react';
 
 function GuessNumberField(props){
