@@ -1,5 +1,4 @@
 import './App.css';
-import { numberSquareIndexes } from './NumberPuzzleLogic';
 import GuessNumberBoard  from './NumberPuzzleDisplayer';
 
 
