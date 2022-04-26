@@ -1,6 +1,6 @@
 import { numberStore, shuffleNumberSquare} from "./NumberPuzzleLogic";
-import { useState, useEffect} from 'react'
-
+import { useState } from 'react'
+let roundValueByUser;
 function GuessNumberField(props){
 return(<>
     <button className="Number-field" style={{visibility: props.visible}}>{props.number}</button>
@@ -10,33 +10,51 @@ return(<>
 function GuessNumberBoard(){
     const [boardNumbers, setBoardNumbers] = useState(numberStore);
     let [roundValue, setRoundValue] = useState(20);
+    const [btnText, setBtnText] = useState('Start');
 
-    const getRoundValue = () => {
-    let value = document.getElementById("rounds").value;
-    if(!isNaN(value) && 0 < value)
-       setRoundValue(value)
+    const startGame = () => {
+    let inputValue = document.getElementById('rounds').value;
+    if(parseInt(inputValue) === 0){
+        setRoundValue(roundValueByUser);
+        setBtnText('Start');
+        return;
+    }
+    else {
+        roundValueByUser = inputValue;
     }
 
-    useEffect(() => {
     const intro = setInterval(() =>{
+        if( roundValue === 0 ){
+            setBtnText('Újra');
+            clearInterval(intro);
+            return;
+        }
         shuffleNumberSquare();
         setBoardNumbers(() => [...numberStore]);
         setRoundValue(--roundValue);
-        if( roundValue === 0 ){
-            clearInterval(intro);
-        }
         }, 500);
-        
-      }, []);
+    }
     
+    const setShuffleValue = (event) => {
+        if( 0 < event.target.value ){
+        setRoundValue(event.target.value);
+         }
+        else {
+        setRoundValue(20);
+         }
+    }
 
     return(<>
         <div className='Game-board'>
        {boardNumbers.map((value) => <GuessNumberField  key={value} number={value} visible={value === 0 ? 'hidden' : ''}/>)}
-       <button onClick={getRoundValue}>Start</button>
-       <input type='text' className="Round-field" id="rounds" value={roundValue}></input>
+       <Button onClick={startGame} text={btnText}/>
+       <input className="Round-field" id="rounds" value={roundValue} onChange={setShuffleValue}></input>
         </div> 
         </>)
+}
+
+function Button(props){
+    return (<button onClick={props.onClick} >{props.text}</button>)
 }
 
 export default GuessNumberBoard;
