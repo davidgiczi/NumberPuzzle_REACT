@@ -5,10 +5,10 @@
 .Number-field{
   height: 100px;
   width: 100px;
-  color: black;
-  background-color:lightgray;
+  background-color:#f0e68c;
   border: 1px solid white;
   font-size: 40px;
+  cursor: pointer;
 }
 
 .Game-board{
@@ -20,4 +20,8 @@
 
 .Round-field{
   width: 30px;
+}
+
+.Btn-class{
+  cursor: pointer;
 }
