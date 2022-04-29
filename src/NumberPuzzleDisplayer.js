@@ -1,5 +1,5 @@
 import { shuffleNumberSquare, step, isTheEndOfTheGame } from './NumberPuzzleLogic';
-import { numberStore, sumShuffleValue, initSumShuffleValue } from './NumberPuzzleLogic';
+import { NUMBER_STORE, sumShuffleValue, initSumShuffleValue } from './NumberPuzzleLogic';
 import welldone from './icon/welldone.jpg';
 import { useState } from 'react'
 let roundValueByUser;
@@ -12,7 +12,7 @@ return(<>
 }
 
 function GuessNumberBoard(){
-    const [boardNumbers, setBoardNumbers] = useState(numberStore);
+    const [boardNumbers, setBoardNumbers] = useState(NUMBER_STORE);
     const [btnText, setBtnText] = useState('Kever');
     let [roundValue, setRoundValue] = useState(20);
     let [inputValue, setInputValue] = useState(20);
@@ -41,7 +41,7 @@ function GuessNumberBoard(){
             return;
         }
         shuffleNumberSquare();
-        setBoardNumbers(() => [...numberStore]);
+        setBoardNumbers(() => [...NUMBER_STORE]);
         setRoundValue(--roundValue);
         setInputValue(--inputValue);
         }, 500);
@@ -57,7 +57,7 @@ function GuessNumberBoard(){
     const stepPlayer = (clickedNumberValue) => {
        setClickValue(++clickValue);
        step(clickedNumberValue);
-       setBoardNumbers(() => [...numberStore]);
+       setBoardNumbers(() => [...NUMBER_STORE]);
        evaluateResult();
     }
 

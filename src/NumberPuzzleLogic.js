@@ -1,4 +1,4 @@
-let numberStore = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
+let NUMBER_STORE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 0];
 const COL_OF_DISP = 4;
 let sumShuffleValue = 0;
 
@@ -15,13 +15,13 @@ const numberSquareIndexes = [
                                         ];
 
 function getNumberSquareIndexArrayValue(){
-    let numberSquareIndexArrayValue = 0;
+    let numberSquareIndexArrayValue = Math.floor(Math.random() * 9);
     let firstIndex = numberSquareIndexes[numberSquareIndexArrayValue][0];
     let secondIndex = numberSquareIndexes[numberSquareIndexArrayValue][1];
     let thirdIndex = numberSquareIndexes[numberSquareIndexArrayValue][2];
     let forthIndex = numberSquareIndexes[numberSquareIndexArrayValue][3];
-    while( numberStore[firstIndex] !== 0 && numberStore[secondIndex] !== 0 && 
-        numberStore[thirdIndex] !== 0 && numberStore[forthIndex] !== 0 ){
+    while( NUMBER_STORE[firstIndex] !== 0 && NUMBER_STORE[secondIndex] !== 0 && 
+        NUMBER_STORE[thirdIndex] !== 0 && NUMBER_STORE[forthIndex] !== 0 ){
         numberSquareIndexArrayValue = Math.floor(Math.random() * 9);
         firstIndex = numberSquareIndexes[numberSquareIndexArrayValue][0];
         secondIndex = numberSquareIndexes[numberSquareIndexArrayValue][1];
@@ -39,10 +39,10 @@ function shuffleNumberSquare(){
     const thirdIndex = numberSquareArray[2];
     const forthIndex = numberSquareArray[3];
     let numberSquare = [];
-    numberSquare.push(numberStore[firstIndex]);
-    numberSquare.push(numberStore[secondIndex]);
-    numberSquare.push(numberStore[thirdIndex]);
-    numberSquare.push(numberStore[forthIndex]);
+    numberSquare.push(NUMBER_STORE[firstIndex]);
+    numberSquare.push(NUMBER_STORE[secondIndex]);
+    numberSquare.push(NUMBER_STORE[thirdIndex]);
+    numberSquare.push(NUMBER_STORE[forthIndex]);
     let shuffleValue = Math.floor(Math.random() * 4);
     sumNeedFullClick(shuffleValue);
     if( shuffleValue === 1 ){
@@ -68,10 +68,10 @@ function shuffleNumberSquare(){
         numberSquare[3] = temp;
     }
 
-    numberStore[numberSquareIndexes[numberSquareIndexArrayValue][0]] = numberSquare[0];
-    numberStore[numberSquareIndexes[numberSquareIndexArrayValue][1]] = numberSquare[1];
-    numberStore[numberSquareIndexes[numberSquareIndexArrayValue][2]] = numberSquare[2];
-    numberStore[numberSquareIndexes[numberSquareIndexArrayValue][3]] = numberSquare[3];
+    NUMBER_STORE[numberSquareIndexes[numberSquareIndexArrayValue][0]] = numberSquare[0];
+    NUMBER_STORE[numberSquareIndexes[numberSquareIndexArrayValue][1]] = numberSquare[1];
+    NUMBER_STORE[numberSquareIndexes[numberSquareIndexArrayValue][2]] = numberSquare[2];
+    NUMBER_STORE[numberSquareIndexes[numberSquareIndexArrayValue][3]] = numberSquare[3];
 }
 
 function sumNeedFullClick(rotateValue){ 
@@ -94,34 +94,34 @@ else {
 }
 
 function isClickAble(clickedValue){
-    const clickedValueIndex = numberStore.indexOf(clickedValue);
+    const clickedValueIndex = NUMBER_STORE.indexOf(clickedValue);
     let row = clickedValueIndex % COL_OF_DISP;
     let col = Math.floor(clickedValueIndex / COL_OF_DISP);  
-   if(row - 1 >= 0 && numberStore[col * COL_OF_DISP +  row - 1] === 0){
+   if(row - 1 >= 0 && NUMBER_STORE[col * COL_OF_DISP +  row - 1] === 0){
     return true;
    }
-   else if(row + 1 < COL_OF_DISP && numberStore[col * COL_OF_DISP +  row + 1] === 0){
+   else if(row + 1 < COL_OF_DISP && NUMBER_STORE[col * COL_OF_DISP +  row + 1] === 0){
     return true;
    }
-   else if(col - 1 >= 0 && numberStore[(col - 1) * COL_OF_DISP +  row] === 0){
+   else if(col - 1 >= 0 && NUMBER_STORE[(col - 1) * COL_OF_DISP +  row] === 0){
     return true;
    }
-   else if(col + 1 < COL_OF_DISP && numberStore[(col + 1) * COL_OF_DISP + row] === 0){
+   else if(col + 1 < COL_OF_DISP && NUMBER_STORE[(col + 1) * COL_OF_DISP + row] === 0){
     return true;
    }
     return false;
 }
 
 function changeNumberValue(clickedValue){
-const clickedValueIndex = numberStore.indexOf(clickedValue);
-const zeroValueIndex = numberStore.indexOf(0);
-numberStore[zeroValueIndex] = clickedValue;
-numberStore[clickedValueIndex] = 0;
+const clickedValueIndex = NUMBER_STORE.indexOf(clickedValue);
+const zeroValueIndex = NUMBER_STORE.indexOf(0);
+NUMBER_STORE[zeroValueIndex] = clickedValue;
+NUMBER_STORE[clickedValueIndex] = 0;
 }
 
 function isTheEndOfTheGame(){
-for(let i = 0; i < numberStore.length - 2; i++){
-    if(numberStore[i] + 1 !== numberStore[ i + 1 ]){
+for(let i = 0; i < NUMBER_STORE.length - 2; i++){
+    if(NUMBER_STORE[i] + 1 !== NUMBER_STORE[ i + 1 ]){
         return false;
     }
 }
@@ -132,5 +132,5 @@ function initSumShuffleValue(){
     sumShuffleValue = 0;
 }
 
-    export {numberStore, sumShuffleValue};
+    export {NUMBER_STORE, sumShuffleValue};
     export {shuffleNumberSquare, step, isTheEndOfTheGame, initSumShuffleValue};                                    
