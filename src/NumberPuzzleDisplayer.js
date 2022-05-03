@@ -4,14 +4,14 @@ import welldone from './icon/welldone.jpg';
 import { useState } from 'react'
 let roundValueByUser;
 
-function GuessNumberField(props){
+function NumberPuzzleField(props){
 return(<>
     <button className='Number-field' onClick={props.onClick} 
     style={{visibility: props.visible, color: props.color, backgroundImage : props.image}}>{props.number}</button>
     </>)
 }
 
-function GuessNumberBoard(){
+function NumberPuzzleBoard(){
     const [boardNumbers, setBoardNumbers] = useState(NUMBER_STORE);
     const [btnText, setBtnText] = useState('Kever');
     let [roundValue, setRoundValue] = useState(20);
@@ -77,7 +77,7 @@ function GuessNumberBoard(){
     return(<>
         <div className='Game-board'>
        {boardNumbers.map((value) =>
-        <GuessNumberField onClick={() => stepPlayer(value)} key={value} 
+        <NumberPuzzleField onClick={() => stepPlayer(value)} key={value} 
         color={value !== 0 ? backgroundColor : 'transparent'} 
         image={value === 0 ? backgroundImage : ''} number={value} visible={value === 0 ? hidden : ''}/>)}
        <Button onClick={startGame} text={btnText}/>
@@ -94,4 +94,4 @@ function InputField(props){
     return (<input className='Round-field' value={props.roundValue} onChange={props.onChange}></input>)
 }
 
-export default GuessNumberBoard;
+export default NumberPuzzleBoard;

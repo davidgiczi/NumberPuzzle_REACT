@@ -1,8 +1,18 @@
+@media (min-width: 800px) {
 .App {
   position: absolute;
   top: 20%;
   margin: 10px;
   left: 35%;
+}
+}
+
+@media (max-width: 800px) {
+
+  .App {
+    position: absolute;
+    top: 20%;
+  }
 }
 
 .Number-field{

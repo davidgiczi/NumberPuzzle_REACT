@@ -1,5 +1,5 @@
 import './App.css';
-import GuessNumberBoard  from './NumberPuzzleDisplayer';
+import NumberPuzzleBoard  from './NumberPuzzleDisplayer';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -7,10 +7,11 @@ function App() {
     <div className="App">
       { <BrowserRouter>
 <Routes>
-  <Route path='/numberpuzzle' element = {<GuessNumberBoard/>}/>
+<Route path='/' element={<NumberPuzzleBoard/>}/>
+  <Route path='/numberpuzzle' element={<NumberPuzzleBoard/>}/>
 </Routes>
 </BrowserRouter>}
-    </div>
+</div>
   );
 }
 
