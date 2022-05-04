@@ -44,7 +44,7 @@ function NumberPuzzleBoard(){
         setBoardNumbers(() => [...NUMBER_STORE]);
         setRoundValue(--roundValue);
         setInputValue(--inputValue);
-        }, 500);
+        }, 300);
     }
     
     const setShuffleValue = (event) => {

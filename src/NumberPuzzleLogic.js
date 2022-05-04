@@ -43,7 +43,7 @@ function shuffleNumberSquare(){
     numberSquare.push(NUMBER_STORE[secondIndex]);
     numberSquare.push(NUMBER_STORE[thirdIndex]);
     numberSquare.push(NUMBER_STORE[forthIndex]);
-    let shuffleValue = Math.floor(Math.random() * 4);
+    let shuffleValue = Math.floor(Math.random() * 3) + 1;
     sumNeedFullClick(shuffleValue);
     if( shuffleValue === 1 ){
         let temp = numberSquare[0];
@@ -84,13 +84,9 @@ else if( rotateValue === 2 ){
 }
 
 function step(clickedValue){
-if( !isClickAble(clickedValue) ) {
-    alert("Nem léptethető mező!")
-    return;
-}
-else {
+if( isClickAble(clickedValue) ) {
     changeNumberValue(clickedValue);
-    }
+}
 }
 
 function isClickAble(clickedValue){
